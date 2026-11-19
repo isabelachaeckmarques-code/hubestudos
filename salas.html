@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF8FB">
+  <meta name="description" content="Crie e acompanhe salas demonstrativas de estudo no Hub de Estudos.">
+  <title>Salas de Estudo | Hub de Estudos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/common.js" defer></script>
+  <script src="js/rooms.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html" aria-label="Hub de Estudos — início"><span class="brand-mark" aria-hidden="true">H</span><span>Hub de Estudos</span></a>
+      <p class="nav-label">MENU</p>
+      <nav class="main-nav" aria-label="Menu principal">
+        <a class="nav-link" data-page="index.html" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"/></svg><span>Início</span></a>
+        <a class="nav-link" data-page="rotina.html" href="rotina.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4m8-4v4M4 10h16m-11 4h6m-6 3h4"/></svg><span>Minha Rotina</span></a>
+        <a class="nav-link" data-page="pomodoro.html" href="pomodoro.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2m-5-11h4m-2 0v2"/></svg><span>Pomodoro</span></a>
+        <a class="nav-link" data-page="salas.html" href="salas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V8l9-5 9 5v12M8 20v-6h8v6"/></svg><span>Salas de Estudo</span></a>
+        <a class="nav-link" data-page="ranking.html" href="ranking.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8m-4-4v4M7 4h10v5a5 5 0 0 1-10 0zm0 2H4v2a4 4 0 0 0 4 4m9-6h3v2a4 4 0 0 1-4 4"/></svg><span>Ranking</span></a>
+        <a class="nav-link" data-page="flashcards.html" href="flashcards.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h12v15H8zM5 8H4v13h12v-1"/></svg><span>Flash Cards</span></a>
+      </nav>
+      <div class="sidebar-note"><span class="note-icon" aria-hidden="true">✦</span><p>Um passo de cada vez. Seu esforço faz diferença.</p></div>
+    </aside>
+    <button class="sidebar-backdrop" type="button" aria-label="Fechar menu" hidden></button>
+    <div class="main-shell">
+      <header class="topbar"><button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><p class="topbar-caption">Seu espaço de aprendizado</p><div class="student-profile" aria-label="Perfil do estudante"><span class="avatar" aria-hidden="true">I</span><span class="profile-copy"><strong id="header-student-name">Olá, ISA</strong><span>Estudante</span></span><span class="profile-chevron" aria-hidden="true">⌄</span></div></header>
+      <main class="dashboard">
+        <section class="community-section" id="salas" aria-labelledby="rooms-title">
+          <div class="community-heading"><p class="eyebrow">SEU ESPAÇO DE ESTUDO</p><h1 id="rooms-title">Salas de Estudo</h1><p>Crie salas locais e acompanhe uma lista demonstrativa de participantes.</p></div>
+          <div class="demo-notice" role="note"><span class="notice-mark" aria-hidden="true">i</span><p><strong>Demonstração local:</strong> salas, códigos e participantes ficam neste navegador. Não há conexão nem comunicação com outras pessoas.</p></div>
+          <div class="room-tools-grid">
+            <form class="panel room-form" id="create-room-form"><h2>Criar uma sala</h2><label for="room-name">Nome da sala</label><input id="room-name" name="roomName" type="text" maxlength="50" placeholder="Ex.: Grupo de Biologia" required><button class="button button-primary" type="submit">Criar sala</button></form>
+            <form class="panel room-form" id="join-room-form"><h2>Entrar com um código</h2><label for="room-code">Código da sala</label><input id="room-code" name="roomCode" type="text" maxlength="10" pattern="HUB-[A-Z0-9]{6}" placeholder="HUB-ABC123" title="Digite um código no formato HUB-ABC123." required><button class="button button-secondary" type="submit">Entrar na sala</button></form>
+            <form class="panel participant-form" id="participant-name-form"><h2>Seu nome local</h2><label for="participant-name">Nome exibido</label><input id="participant-name" name="participantName" type="text" maxlength="30" placeholder="Seu nome" required><p>É apenas um identificador demonstrativo neste navegador, não uma conta.</p><button class="button button-secondary" type="submit">Salvar nome</button></form>
+          </div>
+          <p class="community-feedback" id="community-feedback" role="status" aria-live="polite"></p>
+          <div class="rooms-overview-grid">
+            <section class="panel rooms-panel" aria-labelledby="rooms-list-title"><div class="panel-heading"><div><p class="eyebrow">SALAS NESTE NAVEGADOR</p><h2 id="rooms-list-title">Salas disponíveis</h2></div><span class="room-count" id="room-count">0</span></div><p class="rooms-empty-state" id="rooms-empty-state">Nenhuma sala criada ainda. Crie uma para começar.</p><ul class="rooms-list" id="rooms-list"></ul></section>
+            <section class="panel room-members-panel" aria-labelledby="room-members-title"><div class="panel-heading"><div><p class="eyebrow">PARTICIPANTES</p><h2 id="room-members-title">Sala selecionada</h2></div><span class="room-count" id="room-member-count">0</span></div><div class="selected-room" id="selected-room" hidden><p class="selected-room-name" id="selected-room-name"></p><p class="selected-room-code">Código <code id="selected-room-code"></code></p></div><p class="rooms-empty-state" id="members-empty-state">Selecione uma sala para ver seus participantes.</p><ul class="members-list" id="room-members-list"></ul></section>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF8FB">
+  <meta name="description" content="Acompanhe seu progresso e organize seus estudos no Hub de Estudos.">
+  <title>Início | Hub de Estudos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/common.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html" aria-label="Hub de Estudos — início">
+        <span class="brand-mark" aria-hidden="true">H</span>
+        <span>Hub de Estudos</span>
+      </a>
+      <p class="nav-label">MENU</p>
+      <nav class="main-nav" aria-label="Menu principal">
+        <a class="nav-link" data-page="index.html" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"/></svg><span>Início</span></a>
+        <a class="nav-link" data-page="rotina.html" href="rotina.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4m8-4v4M4 10h16m-11 4h6m-6 3h4"/></svg><span>Minha Rotina</span></a>
+        <a class="nav-link" data-page="pomodoro.html" href="pomodoro.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2m-5-11h4m-2 0v2"/></svg><span>Pomodoro</span></a>
+        <a class="nav-link" data-page="salas.html" href="salas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V8l9-5 9 5v12M8 20v-6h8v6"/></svg><span>Salas de Estudo</span></a>
+        <a class="nav-link" data-page="ranking.html" href="ranking.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8m-4-4v4M7 4h10v5a5 5 0 0 1-10 0zm0 2H4v2a4 4 0 0 0 4 4m9-6h3v2a4 4 0 0 1-4 4"/></svg><span>Ranking</span></a>
+        <a class="nav-link" data-page="flashcards.html" href="flashcards.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h12v15H8zM5 8H4v13h12v-1"/></svg><span>Flash Cards</span></a>
+      </nav>
+      <div class="sidebar-note"><span class="note-icon" aria-hidden="true">✦</span><p>Um passo de cada vez. Seu esforço faz diferença.</p></div>
+    </aside>
+    <button class="sidebar-backdrop" type="button" aria-label="Fechar menu" hidden></button>
+    <div class="main-shell">
+      <header class="topbar">
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+        <p class="topbar-caption">Seu espaço de aprendizado</p>
+        <div class="student-profile" aria-label="Perfil do estudante"><span class="avatar" aria-hidden="true">I</span><span class="profile-copy"><strong id="header-student-name">Olá, ISA</strong><span>Estudante</span></span><span class="profile-chevron" aria-hidden="true">⌄</span></div>
+      </header>
+      <main class="dashboard" id="inicio">
+        <section class="welcome-row" aria-labelledby="welcome-title">
+          <div>
+            <p class="eyebrow" id="welcome-date"></p>
+            <h1 id="welcome-title"><span id="welcome-greeting"></span>, <span id="welcome-student-name">ISA</span> <span aria-hidden="true">☀</span></h1>
+            <p class="welcome-message">Que bom ter você por aqui, ISA. Vamos continuar avançando?</p>
+          </div>
+          <a class="button button-primary" href="rotina.html">Ver minha rotina</a>
+        </section>
+        <section class="stats-grid" aria-label="Resumo dos estudos">
+          <article class="stat-card"><div class="stat-icon icon-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><p class="stat-label">Horas estudadas</p><p class="stat-value" id="hours-studied">0h 0min</p><p class="stat-note">com base nos focos concluídos</p></article>
+          <article class="stat-card"><div class="stat-icon icon-green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></div><p class="stat-label">Tarefas concluídas</p><p class="stat-value" id="completed-task-count" aria-live="polite">0</p><p class="stat-note">na sua rotina</p></article>
+          <article class="stat-card"><div class="stat-icon icon-purple" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9z"/></svg></div><p class="stat-label">Pontuação acumulada</p><p class="stat-value"><span id="score-points">0</span><span> pts</span></p><p class="stat-note"><span id="focus-sessions-count">0</span> sessões de foco concluídas</p><p class="score-storage-status" id="score-storage-status" role="status" aria-live="polite"></p></article>
+          <article class="stat-card next-stat"><div class="stat-icon icon-orange" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4m8-4v4M4 10h16"/></svg></div><p class="stat-label">Próxima atividade</p><p class="next-activity-title" id="next-activity-title">Nenhuma atividade planejada</p><p class="stat-note" id="next-activity-details">Adicione tarefas na Minha Rotina.</p></article>
+        </section>
+        <p class="score-storage-status" id="dashboard-storage-status" role="status" aria-live="polite"></p>
+        <section class="content-grid dashboard-shortcuts" aria-label="Acessos principais">
+          <article class="panel activity-panel">
+            <div class="panel-heading"><div><p class="eyebrow">CONTINUE DE ONDE PAROU</p><h2>Seu espaço de estudos</h2></div></div>
+            <p class="routine-description">Organize suas tarefas, acompanhe sessões de foco e veja seu progresso em um só lugar.</p>
+          </article>
+          <article class="panel focus-panel">
+            <div class="focus-decoration" aria-hidden="true">✦</div><p class="eyebrow">SEU PRÓXIMO PASSO</p><h2>Pronta para focar?</h2><p>Prepare seu espaço e comece uma sessão no seu ritmo.</p><a class="button button-light" href="pomodoro.html">Acessar Pomodoro</a>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

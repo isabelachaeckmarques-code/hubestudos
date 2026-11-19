@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF8FB">
+  <meta name="description" content="Use o cronômetro Pomodoro para organizar seus períodos de foco e descanso.">
+  <title>Pomodoro | Hub de Estudos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/common.js" defer></script>
+  <script src="js/pomodoro.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html" aria-label="Hub de Estudos — início"><span class="brand-mark" aria-hidden="true">H</span><span>Hub de Estudos</span></a>
+      <p class="nav-label">MENU</p>
+      <nav class="main-nav" aria-label="Menu principal">
+        <a class="nav-link" data-page="index.html" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"/></svg><span>Início</span></a>
+        <a class="nav-link" data-page="rotina.html" href="rotina.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4m8-4v4M4 10h16m-11 4h6m-6 3h4"/></svg><span>Minha Rotina</span></a>
+        <a class="nav-link" data-page="pomodoro.html" href="pomodoro.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2m-5-11h4m-2 0v2"/></svg><span>Pomodoro</span></a>
+        <a class="nav-link" data-page="salas.html" href="salas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V8l9-5 9 5v12M8 20v-6h8v6"/></svg><span>Salas de Estudo</span></a>
+        <a class="nav-link" data-page="ranking.html" href="ranking.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8m-4-4v4M7 4h10v5a5 5 0 0 1-10 0zm0 2H4v2a4 4 0 0 0 4 4m9-6h3v2a4 4 0 0 1-4 4"/></svg><span>Ranking</span></a>
+        <a class="nav-link" data-page="flashcards.html" href="flashcards.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h12v15H8zM5 8H4v13h12v-1"/></svg><span>Flash Cards</span></a>
+      </nav>
+      <div class="sidebar-note"><span class="note-icon" aria-hidden="true">✦</span><p>Um passo de cada vez. Seu esforço faz diferença.</p></div>
+    </aside>
+    <button class="sidebar-backdrop" type="button" aria-label="Fechar menu" hidden></button>
+    <div class="main-shell">
+      <header class="topbar"><button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><p class="topbar-caption">Seu espaço de aprendizado</p><div class="student-profile" aria-label="Perfil do estudante"><span class="avatar" aria-hidden="true">I</span><span class="profile-copy"><strong id="header-student-name">Olá, ISA</strong><span>Estudante</span></span><span class="profile-chevron" aria-hidden="true">⌄</span></div></header>
+      <main class="dashboard">
+        <section class="pomodoro-section" id="pomodoro" aria-labelledby="pomodoro-title">
+          <div class="pomodoro-heading"><p class="eyebrow">MANTENHA O FOCO, NO SEU RITMO</p><h1 id="pomodoro-title">Temporizador Pomodoro</h1><p>Alterne entre concentração e descanso para organizar sua sessão.</p></div>
+          <div class="panel pomodoro-card">
+            <div class="pomodoro-modes" role="group" aria-label="Duração do Pomodoro"><button class="mode-button is-selected" type="button" data-mode="focus" aria-pressed="true"><span>Foco</span><span class="mode-duration">25 min</span></button><button class="mode-button" type="button" data-mode="shortBreak" aria-pressed="false"><span>Pausa curta</span><span class="mode-duration">5 min</span></button><button class="mode-button" type="button" data-mode="longBreak" aria-pressed="false"><span>Pausa longa</span><span class="mode-duration">15 min</span></button></div>
+            <div class="timer-face"><p class="timer-mode-label" id="pomodoro-mode-label">Foco</p><time class="timer-display" id="pomodoro-timer" role="timer" aria-live="off" aria-label="25 minutos restantes">25:00</time><p class="pomodoro-status" id="pomodoro-status" role="status" aria-live="polite">Pronto para começar sua sessão de foco.</p></div>
+            <div class="pomodoro-controls"><button class="button button-primary" id="pomodoro-start" type="button"><span>Iniciar</span></button><button class="button button-secondary" id="pomodoro-pause" type="button" disabled><span>Pausar</span></button><button class="button button-secondary" id="pomodoro-reset" type="button"><span>Reiniciar</span></button></div>
+            <div class="pomodoro-progress" aria-live="polite"><p>Sessões de foco concluídas: <strong id="focus-sessions-count">0</strong></p><p>Pontuação acumulada: <strong id="score-points">0</strong> pts</p></div>
+            <p class="score-storage-status" id="score-storage-status" role="status" aria-live="polite"></p>
+            <p class="pomodoro-hint">Trocar de modo reinicia o tempo selecionado. Pause antes de alternar.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

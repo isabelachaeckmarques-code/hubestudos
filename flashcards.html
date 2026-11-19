@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF8FB">
+  <meta name="description" content="Crie e revise flash cards por matéria no Hub de Estudos.">
+  <title>Flash Cards | Hub de Estudos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/common.js" defer></script>
+  <script src="js/flashcards.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html" aria-label="Hub de Estudos — início"><span class="brand-mark" aria-hidden="true">H</span><span>Hub de Estudos</span></a>
+      <p class="nav-label">MENU</p>
+      <nav class="main-nav" aria-label="Menu principal">
+        <a class="nav-link" data-page="index.html" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"/></svg><span>Início</span></a>
+        <a class="nav-link" data-page="rotina.html" href="rotina.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4m8-4v4M4 10h16m-11 4h6m-6 3h4"/></svg><span>Minha Rotina</span></a>
+        <a class="nav-link" data-page="pomodoro.html" href="pomodoro.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2m-5-11h4m-2 0v2"/></svg><span>Pomodoro</span></a>
+        <a class="nav-link" data-page="salas.html" href="salas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V8l9-5 9 5v12M8 20v-6h8v6"/></svg><span>Salas de Estudo</span></a>
+        <a class="nav-link" data-page="ranking.html" href="ranking.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8m-4-4v4M7 4h10v5a5 5 0 0 1-10 0zm0 2H4v2a4 4 0 0 0 4 4m9-6h3v2a4 4 0 0 1-4 4"/></svg><span>Ranking</span></a>
+        <a class="nav-link" data-page="flashcards.html" href="flashcards.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h12v15H8zM5 8H4v13h12v-1"/></svg><span>Flash Cards</span></a>
+      </nav>
+      <div class="sidebar-note"><span class="note-icon" aria-hidden="true">✦</span><p>Um passo de cada vez. Seu esforço faz diferença.</p></div>
+    </aside>
+    <button class="sidebar-backdrop" type="button" aria-label="Fechar menu" hidden></button>
+    <div class="main-shell">
+      <header class="topbar"><button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><p class="topbar-caption">Seu espaço de aprendizado</p><div class="student-profile" aria-label="Perfil do estudante"><span class="avatar" aria-hidden="true">I</span><span class="profile-copy"><strong id="header-student-name">Olá, ISA</strong><span>Estudante</span></span><span class="profile-chevron" aria-hidden="true">⌄</span></div></header>
+      <main class="dashboard">
+        <section class="flashcards-section" aria-labelledby="flashcards-title">
+          <div class="community-heading">
+            <p class="eyebrow">LEMBRE, REVISE, AVANCE</p>
+            <h1 id="flashcards-title">Flash Cards</h1>
+            <p>Crie cartões por matéria e use a revisão ativa para fixar o conteúdo.</p>
+          </div>
+          <div class="flashcards-layout">
+            <form class="panel flashcard-form" id="flashcard-form">
+              <h2 id="flashcard-form-title">Criar um cartão</h2>
+              <label for="flashcard-subject">Matéria</label>
+              <input id="flashcard-subject" name="subject" type="text" maxlength="60" placeholder="Ex.: Biologia" required>
+              <label for="flashcard-question">Pergunta ou conceito — frente</label>
+              <textarea id="flashcard-question" name="question" maxlength="300" placeholder="Ex.: O que é fotossíntese?" required></textarea>
+              <label for="flashcard-answer">Resposta — verso</label>
+              <textarea id="flashcard-answer" name="answer" maxlength="2000" placeholder="Escreva uma resposta clara e objetiva." required></textarea>
+              <button class="button button-primary" id="flashcard-submit" type="submit">Salvar cartão</button>
+              <button class="button button-secondary" id="flashcard-cancel-edit" type="button" hidden>Cancelar edição</button>
+              <p class="flashcard-feedback" id="flashcard-feedback" role="status" aria-live="polite"></p>
+            </form>
+            <section class="panel flashcard-library" aria-labelledby="flashcard-library-title">
+              <div class="panel-heading flashcard-library-heading">
+                <div><p class="eyebrow">SUA COLEÇÃO</p><h2 id="flashcard-library-title">Cartões por matéria</h2></div>
+                <span class="flashcard-count" id="flashcard-count">0 cartões</span>
+              </div>
+              <div class="flashcard-search">
+                <label for="flashcard-search-input">Pesquisar por matéria</label>
+                <input id="flashcard-search-input" type="search" maxlength="60" placeholder="Digite o nome da matéria">
+              </div>
+              <p class="empty-state" id="flashcard-empty-state">Nenhum cartão cadastrado. Crie seu primeiro cartão.</p>
+              <div class="flashcard-groups" id="flashcard-groups"></div>
+            </section>
+          </div>
+          <section class="panel flashcard-review" aria-labelledby="review-title">
+            <div class="panel-heading flashcard-review-heading">
+              <div><p class="eyebrow">MODO DE REVISÃO</p><h2 id="review-title">Um cartão por vez</h2></div>
+            </div>
+            <p class="empty-state review-empty-state" id="review-empty-state">Adicione cartões para começar a revisar.</p>
+            <div class="review-content" id="review-content" hidden>
+              <div class="review-progress"><span id="review-position"></span><span class="review-subject" id="review-subject"></span></div>
+              <article class="review-card" aria-live="polite">
+                <p class="eyebrow">PERGUNTA</p>
+                <p class="review-question" id="review-question"></p>
+                <button class="button button-secondary review-reveal" id="review-reveal" type="button">Revelar resposta</button>
+                <div class="review-answer-area" id="review-answer-area" hidden>
+                  <p class="eyebrow">RESPOSTA</p>
+                  <p class="review-answer" id="review-answer"></p>
+                </div>
+              </article>
+              <div class="review-controls" role="group" aria-label="Avalie sua revisão">
+                <button class="button button-secondary" id="review-learned" type="button" aria-pressed="false" disabled>Aprendi</button>
+                <button class="button button-secondary" id="review-needs-review" type="button" aria-pressed="false" disabled>Preciso revisar</button>
+                <button class="button button-primary" id="review-next" type="button" disabled>Próximo cartão</button>
+              </div>
+              <p class="review-feedback" id="review-feedback" role="status" aria-live="polite"></p>
+            </div>
+            <div class="review-complete" id="review-complete" hidden>
+              <p id="review-summary"></p>
+              <button class="button button-secondary" id="review-again" type="button">Recomeçar revisão</button>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
